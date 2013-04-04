@@ -170,7 +170,7 @@ def report_from_file(file_source, zipped=False):
 		option zipped, default false - True if file is zipped
 		report_from_file("path_to_dmarc_report")
 	"""
-	if z:
+	if zipped:
 		return Report(_unpack_from_zip(open(file_source, "r").read())) 
 	else:
 		return Report(open(file_source, "r").read())
