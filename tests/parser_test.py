@@ -1,8 +1,8 @@
 """unit tests for Parser class"""
 import unittest
 import sys
-sys.path.insert(0, "../dmarclib")
-import dmarclib
+sys.path.insert(0, "./")
+import dmarcap
 from datetime import datetime
 
 class ParserTestFixture(unittest.TestCase):
@@ -11,8 +11,8 @@ class ParserTestFixture(unittest.TestCase):
     def setUp(self):
         self.report_xml = "./tests/sample_report.xml"
         self.invalid_xml = "./tests/invalid_report.xml"
-        self.parser = dmarclib.Parser(self.report_xml)
-        self.invalid_parser = dmarclib.Parser(self.invalid_xml)
+        self.parser = dmarcap.Parser(self.report_xml)
+        self.invalid_parser = dmarcap.Parser(self.invalid_xml)
 
     def test_meta_data(self):
         """Tests for the MetaData class parsing"""
