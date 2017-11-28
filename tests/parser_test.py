@@ -65,6 +65,13 @@ class ParserTestFixture(unittest.TestCase):
         self.assertEqual(first_record.auth_results.spf.domain, "mail6.acme-company.net")
         self.assertEqual(first_record.auth_results.spf.result, "softfail")
 
+    def test_failures(self):
+        """Tests identification of dmarc failures"""
+        aggregate_report = self.parser.parse_report()
+        failures = aggregate_report.dmarc_failures()
+
+        self.assertEqual(len(failures), 1)
+
     def test_invalid_meta_data(self):
         """Test for invalid xml metadata"""
         meta_data = self.invalid_parser.parse_meta_data()
