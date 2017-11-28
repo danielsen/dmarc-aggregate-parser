@@ -1,21 +1,26 @@
 """
-dmarclib.py/meta_data.py - Abstract representation of the meta_data node
-from a DMARC aggregate XML report. For more information, refer to the
-XML schema at https://tools.ietf.org/html/rfc7489#appendix-C
+dmarcap.py/meta_data.py - DMARC aggregate report meta data representation.
+Ref. https://tools.ietf.org/html/rfc7489#appendix-C
 """
 from builtins import object
 from datetime import datetime
 
 class MetaData(object):
     """
-    Representation of aggregate report meta_data
+    Representation of aggregate report MetaDataType 
     """
     def __init__(self):
+        #: Organization which generated the report
         self.org_name = None
+        #: Organzation contact email
         self.email = None
+        #: Additional organization contact info
         self.extra_contact_info = None
+        #: Unique report id
         self.report_id = None
+        #: Report date range beginning (unix timestamp).
         self.date_range_begin = None
+        #: Report date range ending (unix timestamp).
         self.date_range_end = None
 
     def begin_utc_date_iso(self):

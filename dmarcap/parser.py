@@ -1,5 +1,5 @@
 """
-dmarclib/parser.py - Primary DMARC XML aggragate report parsing class
+dmarcap/parser.py - Primary DMARC XML aggragate report parsing class
 """
 from builtins import next
 from builtins import object
@@ -25,7 +25,7 @@ class Parser(object):
         return iter(etree.iterparse(self.report_file, events=("start", "end")))
 
     def parse_report(self):
-        """Parse an entire aggregate report into a Report object"""
+        """Parse report into :class:`~dmarcap.report.Report`"""
         dmarc_report = Report()
         dmarc_report.meta_data = self.parse_meta_data()
         dmarc_report.policy_published = self.parse_policy_published()
@@ -34,7 +34,7 @@ class Parser(object):
         return dmarc_report
 
     def parse_meta_data(self):
-        """Parse aggregate report meta data into a MetaData object"""
+        """Parse report meta data into :class:`~dmarcap.meta_data.MetaData`"""
         report_meta_data = MetaData()
         meta_finished = False
 
@@ -59,7 +59,10 @@ class Parser(object):
         return None
 
     def parse_policy_published(self):
-        """Parse aggregate report policy published into a PolicyPublished object"""
+        """
+        Parse report published policy into
+        :class:`~dmarcap.policy_published.PolicyPublished`
+        """
         report_policy_published = PolicyPublished()
         report_finished = False
 
@@ -89,7 +92,10 @@ class Parser(object):
         return None
 
     def parse_report_records(self):
-        """Parse aggreagte report records into a list of Record objects"""
+        """
+        Parse aggregate report records into a list of
+        :class:`~dmarcap.record.Record`
+        """
         records = []
 
         context = self._get_file_iterator()

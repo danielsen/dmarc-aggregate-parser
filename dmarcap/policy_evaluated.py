@@ -1,12 +1,14 @@
 """
-dmarclib/policy_evaluated.py - Repsentation of the policy_evaluated node
-of a DMARC aggregate report record. For more information, refer to
-https://tools.ietf.org/html/rfc7489#appendix-C
+dmarcap/policy_evaluated.py - DMARC aggregate report evaluation policy
+representation. Ref. https://tools.ietf.org/html/rfc7489#appendix-C
 """
 from builtins import object
 class PolicyEvaluated(object):
-    """Representation of policy_evaluated"""
+    """Representation of PolicyEvaluatedType"""
     def __init__(self):
+        #: Disposition of the :class:`~dmarcap.record.Record`
         self.disposition = None
+        #: Dkim result for the :class:`~dmarcap.record.Record`
         self.dkim = None
+        #: Spf result for the :class:`~dmarcp.record.Record`
         self.spf = None
