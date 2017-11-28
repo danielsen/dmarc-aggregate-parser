@@ -17,3 +17,7 @@ To parse an aggregate report:
 
     >>> import dmarcap
     >>> aggregate_report = dmarcap.Parser("/path/to/report.xml").parse_report()
+
+### Documentation
+
+Further documentation can be found at http://dmarc-aggregate-parser.readthedocs.io/en/latest/
