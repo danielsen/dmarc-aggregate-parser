@@ -13,7 +13,7 @@ from .record import Record
 from .identifiers import Identifiers
 from .auth_results import AuthResults, DkimAuthentication, SpfAuthentication
 from .report import Report
-from .policy_evaluated import PolicyEvaluated
+from .policy_evaluated import PolicyEvaluated, Reason
 from .policy_published import PolicyPublished
 
 class Parser(object):
@@ -112,7 +112,7 @@ class Parser(object):
 
                 report_record.count = (element.findtext("row/count"))
                 report_record.source_ip = (element.findtext("row/source_ip"))
-                
+
                 report_record.indentifiers.header_from = (
                     element.findtext("identifiers/header_from"))
                 report_record.indentifiers.envelope_to = (
@@ -126,6 +126,10 @@ class Parser(object):
                     element.findtext("row/policy_evaluated/dkim"))
                 report_record.policy_evaluated.spf = (
                     element.findtext("row/policy_evaluated/spf"))
+                report_record.policy_evaluated.reasons = [
+                    Reason(reason.find('type').text, reason.find('comment').text)
+                    for reason in element.findall('row/policy_evaluated/reason')
+                ]
 
                 report_record.auth_results.dkim.domain = (
                     element.findtext("auth_results/dkim/domain"))
