@@ -103,7 +103,7 @@ class Parser(object):
         for event, element in context:
             if event == "end" and element.tag == "record":
                 report_record = Record()
-                report_record.indentifiers = Identifiers()
+                report_record.identifiers = Identifiers()
                 report_record.policy_evaluated = PolicyEvaluated()
 
                 report_record.auth_results = AuthResults()
@@ -113,11 +113,11 @@ class Parser(object):
                 report_record.count = (element.findtext("row/count"))
                 report_record.source_ip = (element.findtext("row/source_ip"))
 
-                report_record.indentifiers.header_from = (
+                report_record.identifiers.header_from = (
                     element.findtext("identifiers/header_from"))
-                report_record.indentifiers.envelope_to = (
+                report_record.identifiers.envelope_to = (
                     element.findtext("identifiers/envelope_to"))
-                report_record.indentifiers.envelope_from = (
+                report_record.identifiers.envelope_from = (
                     element.findtext("identifiers/envelope_from"))
 
                 report_record.policy_evaluated.disposition = (
