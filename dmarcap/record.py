@@ -11,7 +11,7 @@ class Record(object):
         #: Number of messages received from this IP
         self.count = None
         #: Message or SMTP :class:`~dmarcap.identifiers.Identifiers`
-        self.indentifiers = None
+        self.identifiers = None
         #: Message :class:`~dmarcap.auth_results.AuthResults`
         self.auth_results = None
         #: Message :class:`~dmarcap.policy_evaluated.PolicyEvaluated`
