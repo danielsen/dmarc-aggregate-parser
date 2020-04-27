@@ -127,8 +127,10 @@ class Parser(object):
                 report_record.policy_evaluated.spf = (
                     element.findtext("row/policy_evaluated/spf"))
                 report_record.policy_evaluated.reasons = [
-                    Reason(reason.find('type').text, reason.find('comment').text)
-                    for reason in element.findall('row/policy_evaluated/reason')
+                    Reason(
+                        reason.find('type').text,
+                        reason.find('comment').text if reason.find('comment') else ''
+                    ) for reason in element.findall('row/policy_evaluated/reason')
                 ]
 
                 report_record.auth_results.dkim.domain = (
